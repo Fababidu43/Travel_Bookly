@@ -1,12 +1,5 @@
 import React, { useState, useRef } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Dimensions,
-  Platform,
-} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
 import { MapPin, Star, Clock, CircleCheck as CheckCircle, RotateCcw, Plus, Minus } from 'lucide-react-native';
 import { Colors } from '@/constants/Colors';
@@ -26,7 +19,6 @@ interface MapScreenProps {
   locations: Location[];
 }
 
-const { width, height } = Dimensions.get('window');
 
 export default function MapScreen({ locations }: MapScreenProps) {
   const [selectedLocation, setSelectedLocation] = useState<Location | null>(null);

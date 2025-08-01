@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -19,7 +19,7 @@ import Svg, {
   G,
   Polygon
 } from 'react-native-svg';
-import { MapPin, Heart, Clock, CircleCheck as CheckCircle, Star, Plane } from 'lucide-react-native';
+import { MapPin, Heart, Clock, CircleCheck as CheckCircle, Star } from 'lucide-react-native';
 import { Colors } from '@/constants/Colors';
 
 interface Location {
