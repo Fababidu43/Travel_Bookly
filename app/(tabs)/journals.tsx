@@ -64,10 +64,10 @@ export default function JournalsScreen() {
               
               {/* Decorative elements */}
               <View style={styles.decorativeElements}>
-                <View style={styles.palmTree}>🌴</View>
+                <View style={styles.palmTree}><Text>🌴</Text></View>
                 <Plane size={24} color="#FFFFFF" style={styles.plane} />
                 <BookOpen size={32} color="#8D6E63" style={styles.book} />
-                <View style={styles.palmTreeRight}>🌴</View>
+                <View style={styles.palmTreeRight}><Text>🌴</Text></View>
               </View>
               
               <View style={styles.featuredContent}>
