@@ -5,20 +5,19 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  ImageBackground,
   SafeAreaView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Plane, BookOpen, Calendar, MapPin } from 'lucide-react-native';
+import { Colors } from '@/constants/Colors';
 
 export default function JournalsScreen() {
   const journals = [
     {
       id: 1,
       title: 'Mes aventures en Asie',
-      date: '16 juillet 2024',
+      date: '16 juil. 2024',
       location: 'Bangkok, Thaïlande',
-      image: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=400',
       pages: 12,
       photos: 45,
     },
@@ -27,7 +26,6 @@ export default function JournalsScreen() {
       title: 'Weekend à Paris',
       date: '2 janvier 2024',
       location: 'Paris, France',
-      image: 'https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=400',
       pages: 6,
       photos: 23,
     },
@@ -36,7 +34,6 @@ export default function JournalsScreen() {
       title: 'Randonnée en Suisse',
       date: '15 décembre 2023',
       location: 'Interlaken, Suisse',
-      image: 'https://images.pexels.com/photos/1007426/pexels-photo-1007426.jpeg?auto=compress&cs=tinysrgb&w=400',
       pages: 8,
       photos: 31,
     },
@@ -45,65 +42,64 @@ export default function JournalsScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-      <LinearGradient
-        colors={['#FAF7F2', '#F4E6D7']}
-        style={styles.header}>
-        <Text style={styles.appTitle}>Travel Bookly</Text>
-        <Text style={styles.title}>Mes aventures{'\n'}en Asie</Text>
-        <Text style={styles.subtitle}>Collect moments,{'\n'}not things</Text>
-      </LinearGradient>
-
-      <View style={styles.content}>
-        <View style={styles.statsContainer}>
-          <TouchableOpacity style={styles.statCard}>
-            <View style={styles.statIcon}>
-              <Calendar size={20} color="#D2691E" />
-            </View>
-            <Text style={styles.statNumber}>16 juillet</Text>
-            <Text style={styles.statLabel}>Beach</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.statCard}>
-            <View style={styles.statIcon}>
-              <MapPin size={20} color="#D2691E" />
-            </View>
-            <Text style={styles.statNumber}>13 avril</Text>
-            <Text style={styles.statLabel}>Bangkok</Text>
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.appTitle}>Travel Bookly</Text>
+          <Text style={styles.title}>Mes carnets{'\n'}de voyage</Text>
+          <Text style={styles.subtitle}>Replonge dans tes plus beaux{'\n'}souvenirs.</Text>
+          
+          <TouchableOpacity style={styles.createButton}>
+            <Text style={styles.createButtonText}>Créer un carnet</Text>
           </TouchableOpacity>
         </View>
 
+        {/* Featured Journal Card */}
+        <View style={styles.featuredSection}>
+          <View style={styles.featuredCard}>
+            <LinearGradient
+              colors={['#F4A460', '#D2691E']}
+              style={styles.featuredGradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}>
+              
+              {/* Decorative elements */}
+              <View style={styles.decorativeElements}>
+                <View style={styles.palmTree}>🌴</View>
+                <Plane size={24} color="#FFFFFF" style={styles.plane} />
+                <BookOpen size={32} color="#8D6E63" style={styles.book} />
+                <View style={styles.palmTreeRight}>🌴</View>
+              </View>
+              
+              <View style={styles.featuredContent}>
+                <Text style={styles.featuredTitle}>Mes aventures{'\n'}en Asie</Text>
+                <Text style={styles.featuredDate}>16 juil. 2024</Text>
+              </View>
+            </LinearGradient>
+          </View>
+        </View>
+
+        {/* All Journals Section */}
         <View style={styles.journalsSection}>
           <Text style={styles.sectionTitle}>Tous mes carnets</Text>
           
           {journals.map((journal) => (
             <TouchableOpacity key={journal.id} style={styles.journalItem}>
-              <ImageBackground
-                source={{ uri: journal.image }}
-                style={styles.journalImage}
-                imageStyle={styles.journalImageStyle}>
-                <LinearGradient
-                  colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.6)']}
-                  style={styles.journalOverlay}>
-                  <View style={styles.journalStats}>
-                    <Text style={styles.journalStatsText}>
-                      {journal.pages} pages • {journal.photos} photos
-                    </Text>
-                  </View>
-                </LinearGradient>
-              </ImageBackground>
-              
               <View style={styles.journalInfo}>
                 <Text style={styles.journalTitle}>{journal.title}</Text>
                 <Text style={styles.journalDate}>{journal.date}</Text>
                 <View style={styles.journalLocation}>
-                  <MapPin size={14} color="#8B7355" />
+                  <MapPin size={14} color={Colors.textSecondary} />
                   <Text style={styles.journalLocationText}>{journal.location}</Text>
                 </View>
+              </View>
+              <View style={styles.journalStats}>
+                <Text style={styles.journalStatsText}>
+                  {journal.pages} pages • {journal.photos} photos
+                </Text>
               </View>
             </TouchableOpacity>
           ))}
         </View>
-      </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -112,7 +108,7 @@ export default function JournalsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAF7F2',
+    backgroundColor: Colors.background,
   },
   header: {
     paddingTop: 60,
@@ -122,7 +118,7 @@ const styles = StyleSheet.create({
   },
   appTitle: {
     fontSize: 16,
-    color: '#8B7355',
+    color: Colors.textSecondary,
     textAlign: 'center',
     marginBottom: 24,
     fontWeight: '500',
@@ -130,116 +126,134 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: '700',
-    color: '#5D4E37',
+    color: Colors.text,
     marginBottom: 8,
     textAlign: 'center',
     lineHeight: 34,
   },
   subtitle: {
     fontSize: 16,
-    color: '#8B7355',
+    color: Colors.textSecondary,
     textAlign: 'center',
-    fontStyle: 'italic',
+    marginBottom: 32,
     lineHeight: 22,
   },
-  content: {
-    paddingHorizontal: 24,
-  },
-  statsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 32,
-  },
-  statCard: {
-    backgroundColor: '#FFFFFF',
-    flex: 1,
-    marginHorizontal: 6,
-    padding: 16,
-    borderRadius: 12,
-    alignItems: 'center',
-    elevation: 2,
+  createButton: {
+    backgroundColor: Colors.buttonPrimary,
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    borderRadius: 25,
+    elevation: 4,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
     shadowRadius: 4,
   },
-  statIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: '#F4E6D7',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 8,
-  },
-  statNumber: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#5D4E37',
-    marginBottom: 2,
-  },
-  statLabel: {
+  createButtonText: {
+    color: Colors.buttonText,
     fontSize: 16,
+    fontWeight: '600',
+  },
+  featuredSection: {
+    paddingHorizontal: 24,
+    marginBottom: 32,
+  },
+  featuredCard: {
+    borderRadius: 20,
+    overflow: 'hidden',
+    elevation: 6,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+  },
+  featuredGradient: {
+    padding: 24,
+    minHeight: 200,
+    position: 'relative',
+  },
+  decorativeElements: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  palmTree: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    fontSize: 24,
+  },
+  palmTreeRight: {
+    position: 'absolute',
+    top: 20,
+    right: 20,
+    fontSize: 24,
+  },
+  plane: {
+    position: 'absolute',
+    top: 30,
+    right: 60,
+    transform: [{ rotate: '15deg' }],
+  },
+  book: {
+    position: 'absolute',
+    bottom: 30,
+    left: '50%',
+    marginLeft: -16,
+  },
+  featuredContent: {
+    marginTop: 'auto',
+  },
+  featuredTitle: {
+    fontSize: 24,
     fontWeight: '700',
-    color: '#5D4E37',
+    color: Colors.textInverse,
+    marginBottom: 8,
+    lineHeight: 28,
+  },
+  featuredDate: {
+    fontSize: 14,
+    color: Colors.textInverse,
+    opacity: 0.9,
   },
   journalsSection: {
+    paddingHorizontal: 24,
     marginBottom: 32,
   },
   sectionTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#5D4E37',
+    color: Colors.text,
     marginBottom: 16,
   },
   journalItem: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.surface,
     borderRadius: 16,
+    padding: 20,
     marginBottom: 16,
-    overflow: 'hidden',
-    elevation: 3,
+    elevation: 2,
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.08,
-    shadowRadius: 6,
-  },
-  journalImage: {
-    height: 120,
-    justifyContent: 'flex-end',
-  },
-  journalImageStyle: {
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
-  },
-  journalOverlay: {
-    padding: 12,
-  },
-  journalStats: {
-    alignSelf: 'flex-end',
-  },
-  journalStatsText: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    fontWeight: '500',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   journalInfo: {
-    padding: 16,
+    flex: 1,
   },
   journalTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#5D4E37',
+    color: Colors.text,
     marginBottom: 4,
   },
   journalDate: {
     fontSize: 14,
-    color: '#8B7355',
+    color: Colors.textSecondary,
     marginBottom: 8,
   },
   journalLocation: {
@@ -248,7 +262,15 @@ const styles = StyleSheet.create({
   },
   journalLocationText: {
     fontSize: 14,
-    color: '#8B7355',
+    color: Colors.textSecondary,
     marginLeft: 4,
+  },
+  journalStats: {
+    alignItems: 'flex-end',
+  },
+  journalStatsText: {
+    fontSize: 12,
+    color: Colors.textTertiary,
+    fontWeight: '500',
   },
 });

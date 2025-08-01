@@ -5,7 +5,6 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
-  Image,
   SafeAreaView,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -19,13 +18,14 @@ import {
   Share2,
   Download
 } from 'lucide-react-native';
+import { Colors } from '@/constants/Colors';
 
 export default function ProfileScreen() {
   const menuItems = [
     {
       icon: BookOpen,
       label: 'Carnets',
-      color: '#D2691E',
+      color: Colors.primary,
       onPress: () => {},
     },
     {
@@ -46,49 +46,30 @@ export default function ProfileScreen() {
       color: '#FFD700',
       onPress: () => {},
     },
-    {
-      icon: Settings,
-      label: 'Paramètres',
-      color: '#8B7355',
-      onPress: () => {},
-    },
-    {
-      icon: Share2,
-      label: 'Partager',
-      color: '#4ECDC4',
-      onPress: () => {},
-    },
-    {
-      icon: Download,
-      label: 'Exporter',
-      color: '#95A5A6',
-      onPress: () => {},
-    },
   ];
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-      <LinearGradient
-        colors={['#FAF7F2', '#F4E6D7']}
-        style={styles.header}>
-        
+        {/* Profile Section */}
         <View style={styles.profileSection}>
+          {/* Avatar with tropical design */}
           <View style={styles.avatarContainer}>
             <LinearGradient
-              colors={['#D2691E', '#FF8C00']}
-              style={styles.avatarGradient}>
-              <Image
-                source={{
-                  uri: 'https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&fit=crop',
-                }}
-                style={styles.avatar}
-              />
+              colors={['#F4A460', '#D2691E']}
+              style={styles.avatarGradient}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}>
+              <View style={styles.avatarContent}>
+                <Text style={styles.avatarEmoji}>🌴</Text>
+                <View style={styles.sunIcon}>☀️</View>
+              </View>
             </LinearGradient>
           </View>
           
           <Text style={styles.userName}>Sarah</Text>
           
+          {/* Stats */}
           <View style={styles.statsContainer}>
             <View style={styles.statItem}>
               <Text style={styles.statNumber}>4</Text>
@@ -104,9 +85,8 @@ export default function ProfileScreen() {
             </View>
           </View>
         </View>
-      </LinearGradient>
 
-      <View style={styles.content}>
+        {/* Menu Items */}
         <View style={styles.menuSection}>
           {menuItems.map((item, index) => (
             <TouchableOpacity key={index} style={styles.menuItem} onPress={item.onPress}>
@@ -116,25 +96,10 @@ export default function ProfileScreen() {
                 </View>
                 <Text style={styles.menuLabel}>{item.label}</Text>
               </View>
-              <ChevronRight size={20} color="#C0B299" />
+              <ChevronRight size={20} color={Colors.textTertiary} />
             </TouchableOpacity>
           ))}
         </View>
-
-        <TouchableOpacity style={styles.premiumBanner}>
-          <LinearGradient
-            colors={['#FFD700', '#FFA500']}
-            style={styles.premiumGradient}>
-            <Crown size={24} color="#FFFFFF" />
-            <View style={styles.premiumContent}>
-              <Text style={styles.premiumTitle}>Passer à Premium</Text>
-              <Text style={styles.premiumSubtitle}>
-                Débloquez toutes les fonctionnalités
-              </Text>
-            </View>
-          </LinearGradient>
-        </TouchableOpacity>
-      </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -143,36 +108,47 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FAF7F2',
-  },
-  header: {
-    paddingTop: 60,
-    paddingHorizontal: 24,
-    paddingBottom: 32,
+    backgroundColor: Colors.background,
   },
   profileSection: {
+    paddingTop: 60,
+    paddingHorizontal: 24,
+    paddingBottom: 40,
     alignItems: 'center',
   },
   avatarContainer: {
-    marginBottom: 16,
+    marginBottom: 20,
   },
   avatarGradient: {
     width: 100,
     height: 100,
     borderRadius: 50,
-    padding: 4,
     alignItems: 'center',
     justifyContent: 'center',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
-  avatar: {
-    width: 92,
-    height: 92,
-    borderRadius: 46,
+  avatarContent: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+  },
+  avatarEmoji: {
+    fontSize: 32,
+  },
+  sunIcon: {
+    position: 'absolute',
+    top: -10,
+    right: -10,
+    fontSize: 20,
   },
   userName: {
     fontSize: 28,
     fontWeight: '700',
-    color: '#5D4E37',
+    color: Colors.text,
     marginBottom: 24,
   },
   statsContainer: {
@@ -186,38 +162,31 @@ const styles = StyleSheet.create({
   statNumber: {
     fontSize: 24,
     fontWeight: '700',
-    color: '#5D4E37',
+    color: Colors.text,
     marginBottom: 4,
   },
   statLabel: {
     fontSize: 14,
-    color: '#8B7355',
+    color: Colors.textSecondary,
     fontWeight: '500',
   },
-  content: {
-    paddingHorizontal: 24,
-  },
   menuSection: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    marginBottom: 24,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
+    paddingHorizontal: 24,
   },
   menuItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    backgroundColor: Colors.surface,
     paddingVertical: 16,
     paddingHorizontal: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#F4E6D7',
+    borderRadius: 16,
+    marginBottom: 12,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
   menuItemLeft: {
     flexDirection: 'row',
@@ -234,31 +203,6 @@ const styles = StyleSheet.create({
   menuLabel: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#5D4E37',
-  },
-  premiumBanner: {
-    borderRadius: 16,
-    overflow: 'hidden',
-    marginBottom: 32,
-  },
-  premiumGradient: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 20,
-  },
-  premiumContent: {
-    marginLeft: 16,
-    flex: 1,
-  },
-  premiumTitle: {
-    fontSize: 18,
-    fontWeight: '700',
-    color: '#FFFFFF',
-    marginBottom: 4,
-  },
-  premiumSubtitle: {
-    fontSize: 14,
-    color: '#FFFFFF',
-    opacity: 0.9,
+    color: Colors.text,
   },
 });

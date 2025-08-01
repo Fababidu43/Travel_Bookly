@@ -1,32 +1,41 @@
 export const Colors = {
-  // Couleurs principales basées sur les spécifications exactes
-  background: '#FEF7E3',        // Fond principal - crème très doux
-  surface: '#FFE9C2',           // Surface/Cartes - arrière-plan des cartes
-  primary: '#E79E4F',           // Accent primaire - boutons, pins visités
-  secondary: '#FFD69B',         // Accent secondaire - gradients légers
+  // Couleurs principales basées sur les maquettes
+  background: '#F5E6D3',        // Fond principal - beige crème
+  surface: '#FFFFFF',           // Surface/Cartes - blanc pur
+  primary: '#D2691E',           // Accent primaire - orange/marron
+  secondary: '#F4A460',         // Accent secondaire - orange clair
   
   // Couleurs spécifiques aux pins
-  visited: '#E79E4F',           // Pin "Visité" - ocre
-  toVisit: '#8DA88B',           // Pin "À visiter" - vert
-  favorite: '#FFD700',          // Pin "Favori" - étoile dorée
+  visited: '#D2691E',           // Pin "Visité" - orange
+  toVisit: '#8FBC8F',           // Pin "À visiter" - vert sauge
+  favorite: '#4682B4',          // Pin "Favori" - bleu avec étoile
   
   // Couleurs de texte
-  text: '#3E2A1A',             // Texte principal - titres, libellés
-  textSecondary: '#7F5C3E',    // Texte secondaire - sous-titres, dates
-  textTertiary: '#B3A08A',     // Icônes inactives
+  text: '#5D4037',             // Texte principal - marron foncé
+  textSecondary: '#8D6E63',    // Texte secondaire - marron moyen
+  textTertiary: '#A1887F',     // Icônes inactives - marron clair
   
   // Couleurs utilitaires
-  border: '#E0C7A5',           // Séparateurs & lignes
-  surfaceVariant: '#F5E6D3',   // Variante de surface
+  border: '#E0E0E0',           // Séparateurs & lignes
+  surfaceVariant: '#FFF8E1',   // Variante de surface - crème très clair
   
   // Couleurs système
-  success: '#8DA88B',
-  warning: '#E79E4F',
-  error: '#B22222',
-  info: '#4682B4',
+  success: '#8FBC8F',
+  warning: '#D2691E',
+  error: '#D32F2F',
+  info: '#1976D2',
   
   // Couleurs inverses
   textInverse: '#FFFFFF',
+  
+  // Couleurs spécifiques aux boutons
+  buttonPrimary: '#D2691E',
+  buttonSecondary: '#F4A460',
+  buttonText: '#FFFFFF',
+  
+  // Couleurs pour les icônes
+  iconActive: '#D2691E',
+  iconInactive: '#A1887F',
 };
 
 export const Spacing = {
