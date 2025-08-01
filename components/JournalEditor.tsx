@@ -9,11 +9,10 @@ import {
   Alert,
 } from 'react-native';
 import { 
-  ArrowLeft, 
-  Image as ImageIcon, 
-  Type, 
-  Bold, 
-  Italic, 
+  ArrowLeft,
+  Image as ImageIcon,
+  Bold,
+  Italic,
   List,
   MapPin,
   Calendar,

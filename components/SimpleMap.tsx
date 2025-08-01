@@ -8,7 +8,6 @@ import {
   ScrollView,
 } from 'react-native';
 import Svg, { Circle, Path, Text as SvgText } from 'react-native-svg';
-import { MapPin } from 'lucide-react-native';
 
 interface Location {
   id: string;
@@ -21,7 +20,7 @@ interface Location {
   description?: string;
 }
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 const mapWidth = width - 48;
 const mapHeight = 300;
 

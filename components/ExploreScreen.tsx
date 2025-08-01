@@ -8,7 +8,7 @@ import {
   TextInput,
   Image,
 } from 'react-native';
-import { Search, Filter, Heart } from 'lucide-react-native';
+import { Search, Heart } from 'lucide-react-native';
 
 export default function ExploreScreen() {
   const [searchQuery, setSearchQuery] = useState('');
