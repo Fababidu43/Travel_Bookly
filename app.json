@@ -4,7 +4,7 @@
     "slug": "travel-maps",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -35,15 +35,6 @@
       "favicon": "./assets/favicon.png",
       "bundler": "metro"
     },
-    "plugins": [
-      "expo-router",
-      [
-        "react-native-maps",
-        {
-          "googleMapsApiKey": "AIzaSyCdX0Eh2utXFDBq0CWq3SEO_14ol6v4L-4"
-        }
-      ]
-    ],
     "experiments": {
       "typedRoutes": true
     }
